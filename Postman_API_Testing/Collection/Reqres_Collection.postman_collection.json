@@ -1,0 +1,163 @@
+{
+	"info": {
+		"_postman_id": "ba69cfce-d7f0-4eb8-8916-3538acd5f591",
+		"name": "Reqres_Collection",
+		"description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50325196",
+		"_collection_link": "https://thibaultlemarchand1-3267730.postman.co/workspace/T-L's-Workspace~15530c2c-771f-459f-887d-225a4d1a2c88/collection/50325196-ba69cfce-d7f0-4eb8-8916-3538acd5f591?action=share&source=collection_link&creator=50325196"
+	},
+	"item": [
+		{
+			"name": "Get data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonResponse = pm.response.json();",
+							"var idUser = pm.environment.get(\"idUser\");",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Email imput is present\", function () {",
+							"    pm.expect(jsonResponse.data).to.have.property(\"email\");",
+							"})",
+							"",
+							"pm.test(\"ID is \" + idUser, function () {",
+							"    pm.expect(jsonResponse.data.id).to.equal(parseInt(idUser));",
+							"})",
+							"",
+							"if(jsonResponse.data && jsonResponse.data.email){",
+							"    var email = jsonResponse.data.email;",
+							"    pm.environment.set(\"user_email\", email);",
+							"    console.log(\"Email set to \" + email + \" in environment variable user_email\");",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "reqres-free-v1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{server}}/users/{{idUser}}",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"users",
+						"{{idUser}}"
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": []
+		},
+		{
+			"name": "Post data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var userEmail = pm.environment.get(\"userEmail\");",
+							"var userId = pm.environment.get(\"idUser\");",
+							"var userToken;",
+							"",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							"",
+							"pm.test(\"Token imput present in response\", function () {",
+							"    pm.expect(pm.response.json()).to.have.property(\"token\");",
+							"})",
+							"",
+							"pm.test(\"Id is \" + userId, function () {",
+							"    pm.expect(pm.response.json().id).to.eql(parseInt(userId));",
+							"})",
+							"",
+							"if(pm.response.json().token) {",
+							"    userToken = pm.response.json().token;",
+							"    pm.environment.set(\"userToken\", userToken);",
+							"    console.log(\"Token is defined in userToken environment variable : \" + userToken);",
+							"}",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "reqres-free-v1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\" : \"{{user_email}}\",\n    \"password\": \"{{newPasswordUser}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/register",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"register"
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
