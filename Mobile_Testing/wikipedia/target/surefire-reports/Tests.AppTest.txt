@@ -1,0 +1,30 @@
+-------------------------------------------------------------------------------
+Test set: Tests.AppTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.698 s <<< FAILURE! -- in Tests.AppTest
+UserCase.Navigate carousel, search Lydia city and change language -- Time elapsed: 0.381 s <<< ERROR!
+org.openqa.selenium.SessionNotCreatedException: 
+Could not start a new session. Response code 500. Message: The application at 'C:\Users\Thibault\OneDrive\Bureau\data\app\app-alpha-universal-release.apk' does not exist or is not accessible 
+Host info: host: 'DESKTOP-5LOOLHV', ip: '169.254.123.204'
+Build info: version: '4.38.0', revision: '6b412e825c*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.9'
+Driver info: io.appium.java_client.android.AndroidDriver
+Command: [null, newSession {capabilities=[Capabilities {appium:app: data/app/app-alpha-universa..., appium:appActivity: org.wikipedia.main.MainActi..., appium:appPackage: org.wikipedia.alpha, appium:automationName: UiAutomator2, appium:deviceName: emulator-5554, appium:platformVersion: 16, platformName: ANDROID}]}]
+Capabilities {appium:app: data/app/app-alpha-universa..., appium:appActivity: org.wikipedia.main.MainActi..., appium:appPackage: org.wikipedia.alpha, appium:automationName: UiAutomator2, appium:deviceName: emulator-5554, appium:platformVersion: 16, platformName: ANDROID}
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:114)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:75)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:61)
+	at io.appium.java_client.remote.AppiumCommandExecutor.createSession(AppiumCommandExecutor.java:178)
+	at io.appium.java_client.remote.AppiumCommandExecutor.execute(AppiumCommandExecutor.java:243)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:557)
+	at io.appium.java_client.AppiumDriver.startSession(AppiumDriver.java:308)
+	at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:174)
+	at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:98)
+	at io.appium.java_client.AppiumDriver.<init>(AppiumDriver.java:109)
+	at io.appium.java_client.android.AndroidDriver.<init>(AndroidDriver.java:108)
+	at Tools.LaunchApplication.setUp(LaunchApplication.java:34)
+
+UserCase.Navigate carousel, search Lydia city and change language -- Time elapsed: 0.382 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "io.appium.java_client.android.AndroidDriver.quit()" because "Tools.LaunchApplication.driver" is null
+	at Tools.LaunchApplication.tearDown(LaunchApplication.java:48)
+

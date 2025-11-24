@@ -7,6 +7,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+/**
+ * Cette classe représente la page de recherche dans l'application Wikipedia.
+ * Elle contient des méthodes pour effectuer une recherche et cliquer sur un
+ * résultat de recherche.
+ */
 public class Search {
 
     private WebDriverWait wait;

@@ -8,6 +8,12 @@ import org.openqa.selenium.WebElement;
 
 import io.appium.java_client.android.AndroidDriver;
 
+/**
+ * Cette classe représente la page de carousel (Page à l'ouverture de
+ * l'application)dans l'application Wikipedia.
+ * Elle contient des méthodes pour naviguer dans le carousel et cliquer sur le
+ * bouton "Get Started".
+ */
 public class Carousel {
     private Tools tools;
 

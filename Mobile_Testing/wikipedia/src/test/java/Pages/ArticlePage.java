@@ -9,6 +9,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.junit.Assert;
 import io.appium.java_client.android.AndroidDriver;
 
+/**
+ * Cette classe représente la page d'article dans l'application Wikipedia.
+ * Elle contient des méthodes pour changer la langue et ouvrir une page
+ * spécifique.
+ */
 public class ArticlePage {
 
     private Tools tools = new Tools();
